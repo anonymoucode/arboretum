@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Test page</title>
+		<style>
+			body {
+				background-color: #EFE;
+			}
+			#message {
+				color: orange;
+			}
+		</style>
+		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet" href="font-awesome-4.5.0/css/font-awesome.min.css">
+		<script type='text/javascript' src='jquery/dist/jquery.min.js'></script>
+	</head>
+	<body>
+		<img style='max-width: 40px' src='images/logo.png' />
+		<span id='message' name='something'>Hello world!</span>
+		<a href="javascript:void(0)">Change message</a>
+		<span id='willRemove' style='background-color: red;'>WILL REMOVE</span>
+		<span id='willChange' style='background-color: orange;'>WILL CHANGE</span>
+		<button type="button" class="btn btn-default btn-lg">
+			<span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star
+		</button>
+		<i class="fa fa-camera-retro fa-5x"></i>
+	</body>
+	<script>
+		var links = document.getElementsByTagName('a'),
+			link  = links[0];
+		link.addEventListener('click', function() {
+			var message = document.getElementById('message');
+			message.innerText = 'goodbye cruel world';
+			var toRemove = document.getElementById('willRemove');
+			toRemove.parentNode.removeChild(toRemove);
+
+			var newDiv = document.createElement("div");
+			var newContent = document.createTextNode("a new hope");
+			newDiv.appendChild(newContent); //add the text node to the newly created div.
+
+			// add the newly created element and its content into the DOM
+			document.body.appendChild(newDiv)
+			//, message);
+			message.setAttribute('a', 1);
+			message.removeAttribute('name');
+
+			var willChange = document.getElementById('willChange');
+			willChange.setAttribute('style', 'background-color: blue');
+			$('img[src]').css('visibility', 'hidden');
+		});
+	</script>
+</html>
